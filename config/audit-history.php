@@ -13,6 +13,9 @@ return [
 //
 //    // Spatie permission master role
 //    'master_role_name' => 'system',
+    'user' => [
+        'name_attribute' => 'full_name_shorten',
+    ],
 
     'formats' => [
 //        'date' => 'F jS, Y',
