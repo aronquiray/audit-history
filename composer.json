@@ -1,0 +1,40 @@
+{
+  "name": "halcyon-laravel/audit-history",
+  "description": "Audit History.",
+  "require": {
+    "php": ">=7.1",
+    "owen-it/laravel-auditing": "^9.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^3.5.0",
+    "phpunit/phpunit": "^7.5|^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "HalcyonLaravel\\AuditHistory\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "HalcyonLaravel\\AuditHistory\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "HalcyonLaravel\\AuditHistory\\Providers\\AuditHistoryServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "coverage": [
+      "./vendor/bin/phpunit --coverage-html ./coverage"
+    ],
+    "coverage-txt": [
+      "./vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover"
+    ],
+    "phpunit": [
+      "./vendor/bin/phpunit --verbose > phpunit.txt -d memory_limit=2048M"
+    ]
+  }
+}
