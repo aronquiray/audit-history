@@ -9,6 +9,7 @@
 namespace HalcyonLaravel\AuditHistory;
 
 use Exception;
+use HalcyonLaravel\Models\Contracts\AuditHistoryInterface;
 
 class AuditHistory
 {
@@ -16,6 +17,10 @@ class AuditHistory
 
     public function buildClass(string $className)
     {
+        if (!(app($className) instanceof AuditHistoryInterface)) {
+            abort(500, 'Argument must implemented in ' . AuditHistoryInterface::class);
+        }
+
         $this->auditHistories = $this->checkUserPermissions()
             ->where('auditable_type', $className);
         return $this;
