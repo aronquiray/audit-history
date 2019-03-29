@@ -48,7 +48,7 @@ class AuditHistory
         if (empty($this->auditHistories)) {
             throw new Exception('No query selected for History Model');
         }
-        $histories = $this->auditHistories->with('user');
+        $histories = $this->auditHistories->with('user')->latest();
         if (!is_null($paginate)) {
             $histories = $histories->paginate($paginate);
         } else {
