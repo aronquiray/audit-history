@@ -18,7 +18,7 @@ return [
 //        'date' => 'F jS, Y',
         'time_12' => 'g:ia',
 //        'time_24' => 'g:i',
-//        'datetime_12' => 'F jS, Y g:ia',
+        'datetime_12' => 'F jS, Y g:ia',
 //        'datetime_24' => 'F jS, Y g:i',
     ],
 
