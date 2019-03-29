@@ -9,7 +9,7 @@
 namespace HalcyonLaravel\AuditHistory;
 
 use Exception;
-use HalcyonLaravel\Models\Contracts\AuditHistoryInterface;
+use HalcyonLaravel\AuditHistory\Models\Contracts\AuditHistoryInterface;
 
 class AuditHistory
 {

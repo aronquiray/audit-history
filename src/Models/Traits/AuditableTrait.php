@@ -1,10 +1,10 @@
 <?php
 
-namespace HalcyonLaravel\Models\Traits;
+namespace HalcyonLaravel\AuditHistory\Models\Traits;
 
 use OwenIt\Auditing\Auditable as BaseAuditable;
 
-trait Auditable
+trait  AuditableTrait
 {
     use BaseAuditable;
 

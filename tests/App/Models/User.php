@@ -16,4 +16,13 @@ class User extends \Illuminate\Foundation\Auth\User
         'first_name',
         'last_name',
     ];
+
+
+    /**
+     * @return string
+     */
+    public function getFullNameShortenAttribute()
+    {
+        return $this->last_name;
+    }
 }

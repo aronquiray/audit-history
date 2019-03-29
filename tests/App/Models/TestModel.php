@@ -8,12 +8,13 @@
 
 namespace HalcyonLaravel\AuditHistory\Tests\App\Models;
 
+use HalcyonLaravel\AuditHistory\Models\Contracts\AuditHistoryInterface;
+use HalcyonLaravel\AuditHistory\Models\Traits\AuditableTrait;
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Auditable;
 
-class TestModel extends Model implements \OwenIt\Auditing\Contracts\Auditable
+class TestModel extends Model implements AuditHistoryInterface
 {
-    use Auditable;
+    use AuditableTrait;
 
 
     protected $table = 'test_model';
@@ -21,4 +22,12 @@ class TestModel extends Model implements \OwenIt\Auditing\Contracts\Auditable
         'first_name',
         'last_name',
     ];
+
+    /**
+     * @return string
+     */
+    public function getHistoryLabelAttribute()
+    {
+        return $this->first_name;
+    }
 }
