@@ -12,7 +12,7 @@
 				__('audit-history::message.actions.' . $history->event,
 					[
 					    'user' => $history->user? $history->user->{config('halcyon-laravel.audit-history.user.name_attribute')}:'unknown',
-					    'name' => $history->auditable->history_lable,
+					    'name' => $history->auditable->history_label,
 					])
 			!!}</p>
         </div>
