@@ -37,6 +37,7 @@ class TestCase extends Orchestra
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('timezone')->default('Asia/Manila');
             $table->timestamps();
         });
 
