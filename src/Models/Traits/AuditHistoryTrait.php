@@ -4,7 +4,7 @@ namespace HalcyonLaravel\AuditHistory\Models\Traits;
 
 use OwenIt\Auditing\Auditable as BaseAuditable;
 
-trait  AuditableTrait
+trait  AuditHistoryTrait
 {
     use BaseAuditable;
 

@@ -10,11 +10,12 @@ namespace HalcyonLaravel\AuditHistory\Tests\App\Models;
 
 use HalcyonLaravel\AuditHistory\Models\Contracts\AuditHistoryInterface;
 use HalcyonLaravel\AuditHistory\Models\Traits\AuditableTrait;
+use HalcyonLaravel\AuditHistory\Models\Traits\AuditHistoryTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class TestModel extends Model implements AuditHistoryInterface
 {
-    use AuditableTrait;
+    use AuditHistoryTrait;
 
 
     protected $table = 'test_model';
