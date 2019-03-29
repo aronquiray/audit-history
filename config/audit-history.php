@@ -8,6 +8,9 @@ return [
         'routes' => [
             'show' => 'admin.auth.user.show',
         ],
+        'fields' => [
+            'timezone' => 'timezone',
+        ],
     ],
 
     'formats' => [
