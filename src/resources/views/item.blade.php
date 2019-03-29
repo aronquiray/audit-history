@@ -1,12 +1,15 @@
 <article class="timeline-entry">
     <div class="timeline-entry-inner">
         <div class="timeline-icon bg-primary">
-            {{-- <i class="fa fa-check"></i> --}}
         </div>
         <div class="timeline-label">
             <time class="clearfix">
-                <span>{{ $history->updated_at->timezone(auth()->check()?app('auth')->user()->timezone:config('app.timezone'))->format(config('halcyon-laravel.audit-history.formats.datetime_12')) }}</span>
-                <span> {{ $history->created_at->timezone(auth()->check()?app('auth')->user()->timezone:config('app.timezone'))->diffForHumans() }}</span>
+                @php
+                    $date = $history->updated_at->timezone(auth()->check()?app('auth')->user()->{config('halcyon-laravel.audit-history.user.fields.timezone')}:config('app.timezone'));
+                @endphp
+                <span>{{ $date->format(config('halcyon-laravel.audit-history.formats.datetime_12')) }}</span>
+                -
+                <span>{{ $date->diffForHumans() }}</span>
             </time>
             <p>{!!
 				__('audit-history::message.actions.' . $history->event,
