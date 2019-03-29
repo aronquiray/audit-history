@@ -14,7 +14,7 @@
                 @endif
             </time>
             <p>{!!
-				__('audit-history::message.actions.' . $history->type,
+				__('audit-history::message.actions.' . $history->event,
 					[
 					    'name' => 'test',
 					'user' => 'xxxx'])
