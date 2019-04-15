@@ -10,6 +10,7 @@ namespace HalcyonLaravel\AuditHistory;
 
 use Exception;
 use HalcyonLaravel\AuditHistory\Models\Contracts\AuditHistoryInterface;
+use InvalidArgumentException;
 
 class AuditHistory
 {
@@ -18,7 +19,7 @@ class AuditHistory
     public function buildClass(string $className)
     {
         if (!(app($className) instanceof AuditHistoryInterface)) {
-            abort(500, 'Argument must implemented in ' . AuditHistoryInterface::class);
+            throw new InvalidArgumentException('Argument must implemented in '.AuditHistoryInterface::class);
         }
 
         $this->auditHistories = $this->checkUserPermissions()
@@ -37,7 +38,7 @@ class AuditHistory
 
 
     /**
-     * @param int|null $paginate
+     * @param  int|null  $paginate
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception

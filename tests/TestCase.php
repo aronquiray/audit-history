@@ -29,7 +29,7 @@ class TestCase extends Orchestra
      */
     protected function setUpDatabase()
     {
-        include_once __DIR__ . '/../vendor/owen-it/laravel-auditing/database/migrations/audits.stub';
+        include_once __DIR__.'/../vendor/owen-it/laravel-auditing/database/migrations/audits.stub';
         (new CreateAuditsTable())->up();
 
 
@@ -65,7 +65,7 @@ class TestCase extends Orchestra
     /**
      * Define environment setup.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param  \Illuminate\Foundation\Application  $app
      *
      * @return void
      */
@@ -79,7 +79,7 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        $app['config']->set('halcyon-laravel.audit-history', include __DIR__ . '/../config/audit-history.php');
+        $app['config']->set('halcyon-laravel.audit-history', include __DIR__.'/../config/audit-history.php');
         $app['config']->set('audit.console', true);
     }
 

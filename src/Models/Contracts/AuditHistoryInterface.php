@@ -9,5 +9,5 @@ interface AuditHistoryInterface extends Auditable
     /**
      * @return string
      */
-    public function getHistoryLabelAttribute();
+    public function getHistoryLabelAttribute(): string;
 }
