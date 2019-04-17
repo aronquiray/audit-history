@@ -36,5 +36,10 @@
     "phpunit": [
       "./vendor/bin/phpunit --verbose > phpunit.txt -d memory_limit=2048M"
     ]
-  }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
