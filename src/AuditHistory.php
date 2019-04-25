@@ -19,7 +19,7 @@ class AuditHistory
     public function buildClass(string $className)
     {
         if (!(app($className) instanceof AuditHistoryInterface)) {
-            throw new InvalidArgumentException('Argument must implemented in '.AuditHistoryInterface::class);
+            throw new InvalidArgumentException("Argument class [$className] must implemented in ".AuditHistoryInterface::class);
         }
 
         $this->auditHistories = $this->checkUserPermissions()
@@ -35,7 +35,6 @@ class AuditHistory
 
         return app(config('audit.implementation'));
     }
-
 
     /**
      * @param  int|null  $paginate
