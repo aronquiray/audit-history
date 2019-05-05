@@ -27,7 +27,7 @@ class TestModel extends Model implements AuditHistoryInterface
     /**
      * @return string
      */
-    public function getHistoryLabelAttribute()
+    public function getHistoryLabelAttribute(): string
     {
         return $this->first_name;
     }
