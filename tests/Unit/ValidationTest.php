@@ -11,7 +11,7 @@ namespace HalcyonLaravel\AuditHistory\Tests\Unit;
 use Exception;
 use HalcyonLaravel\AuditHistory\Tests\TestCase;
 
-class SampleTest extends TestCase
+class ValidationTest extends TestCase
 {
     /**
      * @test
