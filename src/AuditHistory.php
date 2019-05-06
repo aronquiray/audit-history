@@ -21,10 +21,11 @@ class AuditHistory
 
     /**
      * @param  string  $className
+     * @param  int|null  $id
      *
      * @return $this
      */
-    public function buildClass(string $className)
+    public function buildClass(string $className, int $id = null)
     {
         if (!(app($className) instanceof AuditHistoryInterface)) {
             throw new InvalidArgumentException("Argument class [$className] must implemented in ".AuditHistoryInterface::class);
@@ -32,6 +33,11 @@ class AuditHistory
 
         $this->auditHistories = $this->checkUserPermissions()
             ->where('auditable_type', $className);
+
+        if (!is_null($id)) {
+            $this->auditHistories = $this->auditHistories
+                ->where('auditable_id', $id);
+        }
         return $this;
     }
 
