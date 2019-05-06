@@ -44,16 +44,17 @@ class AuditHistory
      */
     public function render(int $paginate = null)
     {
-
         if (empty($this->auditHistories)) {
             throw new Exception('No query selected for History Model');
         }
+
         $histories = $this->auditHistories->with('user')->latest();
         if (is_null($paginate)) {
             $histories = $histories->get();
         } else {
             $histories = $histories->paginate($paginate);
         }
+
         return view('audit-history::list', compact('histories', 'paginate'));
     }
 }
