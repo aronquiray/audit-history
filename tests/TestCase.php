@@ -4,6 +4,7 @@ namespace HalcyonLaravel\AuditHistory\Tests;
 
 use CreateAuditsTable;
 use HalcyonLaravel\AuditHistory\Tests\App\Models\TestModel;
+use HalcyonLaravel\AuditHistory\Tests\App\Models\TestSoftDeleteModel;
 use HalcyonLaravel\AuditHistory\Tests\App\Models\User;
 use Illuminate\Database\Schema\Blueprint;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -12,6 +13,7 @@ class TestCase extends Orchestra
 {
     protected $testModel;
     protected $user;
+    protected $testSoftDeleteModel;
 
     /**
      *{@inheritdoc}
@@ -39,6 +41,14 @@ class TestCase extends Orchestra
             $table->string('last_name');
             $table->timestamps();
         });
+        $this->app['db']->connection()->getSchemaBuilder()->create('test_soft_delete_model',
+            function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('first_name');
+                $table->string('last_name');
+                $table->softDeletes();
+                $table->timestamps();
+            });
 
         $this->app['db']->connection()->getSchemaBuilder()->create('users', function (Blueprint $table) {
             $table->increments('id');
@@ -54,6 +64,10 @@ class TestCase extends Orchestra
         $this->testModel = TestModel::create([
             'first_name' => 'test first name',
             'last_name' => 'test last name',
+        ]);
+        $this->testSoftDeleteModel = TestSoftDeleteModel::create([
+            'first_name' => 'test first name sd',
+            'last_name' => 'test last name sd',
         ]);
         $this->user = User::create([
             'first_name' => 'test first name',

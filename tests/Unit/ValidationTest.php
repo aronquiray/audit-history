@@ -19,7 +19,8 @@ class ValidationTest extends TestCase
     public function invalid_arg()
     {
         $this->expectException(Exception::class);
-        $this->assertEquals('test', app('audit-history')->buildClass(get_class($this->user))->render(10));
+        app('audit-history')->buildClass(get_class($this->user))->render(10);
+
     }
 
     /**
@@ -27,6 +28,6 @@ class ValidationTest extends TestCase
      */
     public function valid()
     {
-        $this->assertNotNull(app('audit-history')->buildClass(get_class($this->testModel))->render(10));
+        $this->assertNotNull((string) app('audit-history')->buildClass(get_class($this->testModel))->render(10));
     }
 }
