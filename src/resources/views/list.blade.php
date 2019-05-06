@@ -9,7 +9,7 @@
         </div>
     </div>
 </div>
-@if($paginate)
+@if(!is_null($paginate))
     <div class="clearfix">
         <div class="pull-right"> {{ $histories->links() }} </div>
     </div>
