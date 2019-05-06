@@ -14,8 +14,16 @@ use InvalidArgumentException;
 
 class AuditHistory
 {
+    /**
+     * @var
+     */
     private $auditHistories;
 
+    /**
+     * @param  string  $className
+     *
+     * @return $this
+     */
     public function buildClass(string $className)
     {
         if (!(app($className) instanceof AuditHistoryInterface)) {
@@ -27,6 +35,9 @@ class AuditHistory
         return $this;
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|mixed
+     */
     private function checkUserPermissions()
     {
 //        if ($this->_isNotMasterRole) {
