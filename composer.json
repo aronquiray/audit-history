@@ -30,7 +30,8 @@
   "extra": {
     "laravel": {
       "providers": [
-        "HalcyonLaravel\\AuditHistory\\Providers\\AuditHistoryServiceProvider"
+        "HalcyonLaravel\\AuditHistory\\Providers\\AuditHistoryServiceProvider",
+        "HalcyonLaravel\\AuditHistory\\Providers\\AuditHistoryEventServiceProvider"
       ]
     }
   },

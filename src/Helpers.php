@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Helpers
 {
-    public static function getAuditableName($history): array
+    public static function getAuditableName($history): string
     {
         $fieldValues = 'old_values';
         if (in_array($history->event, ['updated', 'created'])) {
@@ -15,12 +15,8 @@ class Helpers
 
         $auditable = $history->auditable;
         if (!empty($auditable)) {
-            return self::returnValue(
-                $history->event,
-                $history->{$fieldValues}[$auditable->getAuditHistoryOptions()->fieldName],
-                );
+            return $history->{$fieldValues}[$auditable->getAuditHistoryOptions()->fieldName];
         }
-
 
         $auditable = app($history->auditable_type);
 
@@ -30,24 +26,10 @@ class Helpers
         if ($isHasSoftDelete) {
             $model = $auditable->where('id', $history->auditable_id)->onlyTrashed()->first();
             if (!empty($model)) {
-                return self::returnValue(
-                    $history->event,
-                    $model->{$auditable->getAuditHistoryOptions()->fieldName},
-                );
+                return $model->{$auditable->getAuditHistoryOptions()->fieldName};
             }
         }
 
-        return self::returnValue(
-            'purged',//$history->event,
-            $history->old_values[$auditable->getAuditHistoryOptions()->fieldName],
-        );
-    }
-
-    private static function returnValue(string $event, string $label): array
-    {
-        return [
-            'event' => $event,
-            'label' => $label,
-        ];
+        return $history->old_values[$auditable->getAuditHistoryOptions()->fieldName];
     }
 }
