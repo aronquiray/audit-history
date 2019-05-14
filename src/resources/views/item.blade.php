@@ -1,5 +1,6 @@
 @php
-    $date = $history->updated_at->timezone(auth()->check()?app('auth')->user()->{config('audit-history.user.fields.timezone')}:config('app.timezone'));
+    use HalcyonLaravel\AuditHistory\Helpers;$date = $history->updated_at->timezone(auth()->check()?app('auth')->user()->{config('audit-history.user.fields.timezone')}:config('app.timezone'));
+    $auditHelper = Helpers::getAuditableName($history);
 @endphp
 <article class="timeline-entry">
     <div class="timeline-entry-inner">
@@ -12,10 +13,10 @@
                 <span>{{ $date->diffForHumans() }}</span>
             </time>
             <p>{!!
-				__('audit-history::message.actions.' . $history->event,
+				__('audit-history::message.actions.' . $auditHelper['event'],
 					[
 					    'user' => $history->user? $history->user->{config('audit-history.user.name_attribute')}:'unknown',
-					    'name' => \HalcyonLaravel\AuditHistory\Helpers::getAuditableName($history),
+					    'name' => $auditHelper['label'],
 					])
 			!!}</p>
         </div>
