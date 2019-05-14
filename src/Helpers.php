@@ -30,6 +30,6 @@ class Helpers
             }
         }
 
-        return $history->old_values[$auditable->getAuditHistoryOptions()->fieldName];
+        return $history->{$fieldValues}[$auditable->getAuditHistoryOptions()->fieldName];
     }
 }
