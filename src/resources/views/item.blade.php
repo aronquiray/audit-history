@@ -1,6 +1,5 @@
 @php
     $date = $history->updated_at->timezone(auth()->check()?app('auth')->user()->{config('audit-history.user.fields.timezone')}:config('app.timezone'));
-    $auditable = $history->auditable;
 @endphp
 <article class="timeline-entry">
     <div class="timeline-entry-inner">
@@ -16,7 +15,7 @@
 				__('audit-history::message.actions.' . $history->event,
 					[
 					    'user' => $history->user? $history->user->{config('audit-history.user.name_attribute')}:'unknown',
-					    'name' => empty($auditable)?'unknown':$auditable->history_label,
+					    'name' => \HalcyonLaravel\AuditHistory\Helpers::getAuditableName($history),
 					])
 			!!}</p>
         </div>

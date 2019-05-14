@@ -8,6 +8,7 @@
 
 namespace HalcyonLaravel\AuditHistory\Tests\App\Models;
 
+use HalcyonLaravel\AuditHistory\AuditHistoryOptions;
 use HalcyonLaravel\AuditHistory\Models\Contracts\AuditHistoryInterface;
 use HalcyonLaravel\AuditHistory\Models\Traits\AuditableTrait;
 use HalcyonLaravel\AuditHistory\Models\Traits\AuditHistoryTrait;
@@ -27,10 +28,11 @@ class TestSoftDeleteModel extends Model implements AuditHistoryInterface
     ];
 
     /**
-     * @return string
+     * @return \HalcyonLaravel\AuditHistory\AuditHistoryOptions
      */
-    public function getHistoryLabelAttribute(): string
+    public function getAuditHistoryOptions(): AuditHistoryOptions
     {
-        return $this->first_name;
+        return AuditHistoryOptions::create()
+            ->fieldName('first_name');
     }
 }

@@ -1,9 +1,17 @@
 {
   "name": "halcyon-laravel/audit-history",
   "description": "Audit History.",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:halcyonlaravel/helpers.git"
+    }
+  ],
   "require": {
     "php": ">=7.1",
-    "owen-it/laravel-auditing": "^9.0"
+    "halcyon-laravel/helpers": "^1.0",
+    "owen-it/laravel-auditing": "^9.0",
+    "ext-json": "*"
   },
   "require-dev": {
     "orchestra/testbench": "^3.5.0",

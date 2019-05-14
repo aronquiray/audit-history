@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "813456d4a4dcacefaa1c0d3b651ea8a1",
+  "content-hash": "7e8c679c4b64a908e0e8d05ed04bd57e",
   "packages": [
     {
       "name": "doctrine/inflector",
@@ -283,6 +283,36 @@
         "parser"
       ],
       "time": "2019-03-17T18:48:37+00:00"
+    },
+    {
+      "name": "halcyon-laravel/helpers",
+      "version": "v1.0.0",
+      "source": {
+        "type": "git",
+        "url": "git@bitbucket.org:halcyonlaravel/helpers.git",
+        "reference": "4dca89e2c851551b2f6fc879d87b4163e4502743"
+      },
+      "require": {
+        "php": ">=7.1"
+      },
+      "type": "library",
+      "extra": {
+        "laravel": {
+          "providers": [],
+          "aliases": []
+        }
+      },
+      "autoload": {
+        "psr-4": [],
+        "files": [
+          "src/helpers.php"
+        ]
+      },
+      "autoload-dev": {
+        "psr-4": []
+      },
+      "description": "Base helpers",
+      "time": "2019-05-14T00:40:58+00:00"
     },
     {
       "name": "laravel/framework",
