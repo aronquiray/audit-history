@@ -9,7 +9,7 @@ class Helpers
     public static function getAuditableName($history): string
     {
         $fieldValues = 'old_values';
-        if (in_array($history->event, ['updated', 'created'])) {
+        if (in_array($history->event, ['updated', 'created', 'restored'])) {
             $fieldValues = 'new_values';
         }
 
