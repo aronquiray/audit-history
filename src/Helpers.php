@@ -15,7 +15,7 @@ class Helpers
 
         $auditable = $history->auditable;
         if (!empty($auditable)) {
-            return $history->{$fieldValues}[$auditable->getAuditHistoryOptions()->fieldName];
+            return $auditable->{$auditable->getAuditHistoryOptions()->fieldName};
         }
 
         $auditable = app($history->auditable_type);
