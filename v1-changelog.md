@@ -2,6 +2,7 @@
 
 
 ## Changes Log 
+    v1.0.10: Fix unknown model 
     v1.0.9: Refactor
     v1.0.8: Add restore to for new_values
     v1.0.5: Fix purged

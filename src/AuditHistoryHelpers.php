@@ -33,7 +33,10 @@ class AuditHistoryHelpers
             }
         }
 
-        return $history->{$fieldValues}[$auditable->getAuditHistoryOptions()->fieldName];
+        $fieldName = $auditable->getAuditHistoryOptions()->fieldName;
+        $values = $history->{$fieldValues};
+
+        return isset($values[$fieldName]) ? $values[$fieldName] : 'unknown';
     }
 
     /**
