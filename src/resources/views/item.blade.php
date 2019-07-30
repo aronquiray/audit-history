@@ -1,5 +1,5 @@
 @php
-    $date = $history->updated_at->timezone(auth()->check()?app('auth')->user()->{config('audit-history.user.fields.timezone')}:config('app.timezone'));
+    $date = app('audit-history.helpers')->getUpdatedAtWithTimezone($history);
 @endphp
 <article class="timeline-entry">
     <div class="timeline-entry-inner">

@@ -2,6 +2,7 @@
 
 namespace HalcyonLaravel\AuditHistory;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AuditHistoryHelpers
@@ -19,7 +20,7 @@ class AuditHistoryHelpers
         }
 
         $auditable = $history->auditable;
-        if (!empty($auditable)) {
+        if (!blank($auditable)) {
             return $auditable->{$auditable->getAuditHistoryOptions()->fieldName};
         }
 
@@ -27,7 +28,7 @@ class AuditHistoryHelpers
 
         if (is_class_uses_deep($auditable, SoftDeletes::class)) {
             $model = $auditable->where('id', $history->auditable_id)->onlyTrashed()->first();
-            if (!empty($model)) {
+            if (!blank($model)) {
                 return $model->{$auditable->getAuditHistoryOptions()->fieldName};
             }
         }
@@ -42,6 +43,22 @@ class AuditHistoryHelpers
      */
     public function getUserName($history): string
     {
-        return $history->user ? $history->user->{config('audit-history.user.name_attribute')} : 'unknown';
+        return $history->user
+            ? $history->user->{config('audit-history.user.name_attribute')}
+            : 'unknown';
+    }
+
+    /**
+     * @param $history
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getUpdatedAtWithTimezone($history): Carbon
+    {
+        return $history->updated_at->timezone(
+            auth()->check()
+                ? app('auth')->user()->{config('audit-history.user.fields.timezone')}
+                : config('app.timezone')
+        );
     }
 }
