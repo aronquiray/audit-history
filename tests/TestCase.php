@@ -108,6 +108,7 @@ class TestCase extends Orchestra
     {
         return [
             "HalcyonLaravel\\AuditHistory\\Providers\\AuditHistoryServiceProvider",
+            "HalcyonLaravel\\AuditHistory\\Providers\\AuditHistoryEventServiceProvider",
             "OwenIt\\Auditing\\AuditingServiceProvider",
         ];
     }

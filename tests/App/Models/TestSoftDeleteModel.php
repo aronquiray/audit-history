@@ -10,7 +10,6 @@ namespace HalcyonLaravel\AuditHistory\Tests\App\Models;
 
 use HalcyonLaravel\AuditHistory\AuditHistoryOptions;
 use HalcyonLaravel\AuditHistory\Models\Contracts\AuditHistoryInterface;
-use HalcyonLaravel\AuditHistory\Models\Traits\AuditableTrait;
 use HalcyonLaravel\AuditHistory\Models\Traits\AuditHistoryTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

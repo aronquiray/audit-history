@@ -3,6 +3,7 @@
 namespace HalcyonLaravel\AuditHistory\Providers;
 
 use HalcyonLaravel\AuditHistory\AuditHistory;
+use HalcyonLaravel\AuditHistory\AuditHistoryHelpers;
 use Illuminate\Support\ServiceProvider;
 
 class AuditHistoryServiceProvider extends ServiceProvider
@@ -20,6 +21,10 @@ class AuditHistoryServiceProvider extends ServiceProvider
     {
         $this->app->bind('audit-history', function ($app) {
             return new AuditHistory;
+        });
+
+        $this->app->bind('audit-history.helpers', function () {
+            return new AuditHistoryHelpers;
         });
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'audit-history');

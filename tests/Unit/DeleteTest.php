@@ -22,4 +22,21 @@ class DeleteTest extends TestCase
 //        dd((string) app('audit-history')->buildClass(get_class($this->testSoftDeleteModel))->render(10));
         $this->assertNotNull((string) app('audit-history')->buildClass(get_class($this->testSoftDeleteModel))->render(10));
     }
+
+    /**
+     * @test
+     */
+    public function delete_soft_delete_data_then_purge_then_show()
+    {
+        $this->actingAs($this->user);
+        $model = TestSoftDeleteModel::create([
+            'first_name' => 'lloric',
+            'last_name' => 'garcia',
+        ]);
+        $model->delete();
+        $model->forceDelete();
+
+//        dd((string) app('audit-history')->buildClass(get_class($this->testSoftDeleteModel))->render(10));
+        $this->assertNotNull((string) app('audit-history')->buildClass(get_class($this->testSoftDeleteModel))->render(10));
+    }
 }

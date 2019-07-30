@@ -4,8 +4,13 @@ namespace HalcyonLaravel\AuditHistory;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Helpers
+class AuditHistoryHelpers
 {
+    /**
+     * @param $history
+     *
+     * @return string
+     */
     public static function getAuditableName($history): string
     {
         $fieldValues = 'old_values';
@@ -31,5 +36,15 @@ class Helpers
         }
 
         return $history->{$fieldValues}[$auditable->getAuditHistoryOptions()->fieldName];
+    }
+
+    /**
+     * @param $history
+     *
+     * @return string
+     */
+    public function getUserName($history): string
+    {
+        return $history->user ? $history->user->{config('audit-history.user.name_attribute')} : 'unknown';
     }
 }

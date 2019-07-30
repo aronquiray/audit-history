@@ -14,8 +14,8 @@
             <p>{!!
 				__('audit-history::message.actions.' . $history->event,
 					[
-					    'user' => $history->user? $history->user->{config('audit-history.user.name_attribute')}:'unknown',
-					    'name' => HalcyonLaravel\AuditHistory\Helpers::getAuditableName($history),
+					    'user' => app('audit-history.helpers')->getUserName($history),
+					    'name' => app('audit-history.helpers')->getAuditableName($history),
 					])
 			!!}</p>
         </div>
