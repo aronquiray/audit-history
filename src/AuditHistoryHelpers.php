@@ -25,10 +25,7 @@ class AuditHistoryHelpers
 
         $auditable = app($history->auditable_type);
 
-        $isHasSoftDelete = is_class_uses_deep($auditable, SoftDeletes::class);
-
-//        $key = $auditable->getKey();
-        if ($isHasSoftDelete) {
+        if (is_class_uses_deep($auditable, SoftDeletes::class)) {
             $model = $auditable->where('id', $history->auditable_id)->onlyTrashed()->first();
             if (!empty($model)) {
                 return $model->{$auditable->getAuditHistoryOptions()->fieldName};
