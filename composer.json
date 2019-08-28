@@ -1,6 +1,7 @@
 {
   "name": "halcyon-laravel/audit-history",
-  "description": "Audit History.",
+  "description": "Audit History for Core-Boilerplate",
+  "license": "proprietary",
   "repositories": [
     {
       "type": "vcs",
