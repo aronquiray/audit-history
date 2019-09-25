@@ -10,6 +10,7 @@ namespace HalcyonLaravel\AuditHistory;
 
 use Exception;
 use HalcyonLaravel\AuditHistory\Models\Contracts\AuditHistoryInterface;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 
 class AuditHistory
@@ -31,8 +32,11 @@ class AuditHistory
             throw new InvalidArgumentException("Argument class [$className] must implemented in ".AuditHistoryInterface::class);
         }
 
+        $entity = Str::slug(class_basename($className), '_');
+
         $this->auditHistories = $this->checkUserPermissions()
-            ->where('auditable_type', $className);
+            ->where('auditable_type', $className)
+            ->orWhere('tags', 'like', "media_entity_{$entity}%");
 
         if (!is_null($id)) {
             $this->auditHistories = $this->auditHistories

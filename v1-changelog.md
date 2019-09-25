@@ -2,6 +2,7 @@
 
 
 ## Changes Log 
+    v1.1.0: Allow get media from models
     v1.0.11: Add license "proprietary" as closed-source
     v1.0.10: Fix unknown model 
     v1.0.9: Refactor
